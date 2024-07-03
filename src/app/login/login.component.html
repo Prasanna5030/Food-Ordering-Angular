@@ -1,0 +1,39 @@
+<div class="container">
+    <h1> Login </h1>
+    <div class="signin-form login-form">
+        <form [formGroup]="loginForm" (ngSubmit)="handleLogin(loginForm)" class="form-group">
+
+            <div >
+            <label for="email"> Email</label>
+            <input type="email" id="email" formControlName="email" class="form-control" required />
+            <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
+                <div *ngIf="loginForm.get('email')?.errors.required">
+                    <span class="text-danger">email is required </span>
+                </div>
+                <div *ngIf="loginForm.get('email').errors.email" [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
+                    <span class="text-danger">Invalid email </span>
+                </div>
+            </div>
+
+            </div>
+
+
+            <div >
+                <label for="password"> Password</label>
+                <input type="password" id="password" formControlName="password" class="form-control"  required />
+                <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
+                    <div *ngIf="loginForm.get('password').errors.required">
+                        <span class="text-danger"> password is required to login </span>
+                    </div>
+                </div>
+    
+                </div>
+                <div class="links">
+                <a href="/signup" > New user? Sign up now </a>
+                <a href="/forgotpassword"> ForgotPassword </a>
+                </div>
+                <button type="submit" class="btn btn-success" [disabled]="loginForm.invalid"> Login  </button>
+    
+        </form>
+    </div>
+</div>
