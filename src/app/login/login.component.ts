@@ -45,6 +45,7 @@ export class LoginComponent {
     this.userService.login(data).subscribe((response:any)=>{
       
       this.ngxUILoader.stop();
+      localStorage.setItem('token',response.access_token)
       this.responseMessage=response?.message;
       this.snackbarService.openSnackbar(this.responseMessage,"");
       this.router.navigate(['/dashboard']);

@@ -11,13 +11,15 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { NgxUiLoaderConfig, NgxUiLoaderModule, SPINNER } from 'ngx-ui-loader';
 import { CommonModule } from '@angular/common';
 import { ErrorComponent } from './error/error.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { MaterialModule } from './shared/material-module';
-
+import { tokenInterceptorInterceptor } from './services/token-interceptor.interceptor';
+import { RouteGuardService } from './services/route-guard.service';
+import {authInterceptorInterceptor} from './auth-interceptor.interceptor';
 const ngxUILoaderConfig: NgxUiLoaderConfig={
   text:"Loading...",
   textColor:"#FFFFFF",
@@ -54,9 +56,13 @@ const ngxUILoaderConfig: NgxUiLoaderConfig={
    // SignupModule
   ],
   providers: [
+    provideHttpClient(withInterceptors([authInterceptorInterceptor])),
+
+  //  {provide:HTTP_INTERCEPTORS,useClass:tokenInterceptorInterceptor, multi:true},
     provideClientHydration(),
     provideAnimationsAsync(),
-    provideHttpClient()
+    provideHttpClient(),
+  
   ],
   bootstrap: [AppComponent]
 })
