@@ -1,1 +1,27 @@
+<div class="bg-image"></div>
 <app-best-seller></app-best-seller>
+
+<div class="wrapper sticky">
+  <nav class="navbar-fixed-top">
+    <a href="#" class="logo">
+      <mat-icon>storefront</mat-icon>   Cafe - Resto - Bar
+    </a>
+    <ul>
+        <li> 
+            <button  class ="btn btn-primary px-3"(click)="openLoginPage()">Login </button>
+            <button  class ="btn btn-success px-3"(click)="openRegistrationPage()">Signup </button>
+
+            <a
+            data-mdb-ripple-init
+            class="btn px-3"
+            href="https://github.com/mdbootstrap/mdb-ui-kit"
+            role="button"
+            ><i class="fa fa-user" style="font-size:36px;"></i
+          ></a>
+        </li>
+    </ul>
+  </nav>
+</div>
+<div class="footer" id="signup">
+  <h2>All right reserved &copy; {{date}}</h2>
+</div>

@@ -65,7 +65,7 @@ export class SignupComponent implements OnInit {
       this.ngxService.stop();
       this.responseMessage= response?.message;
       this.snackbarService.openSnackbar(this.responseMessage,"");
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/cafe/dashboard']);
     },(error)=>{
       this.ngxService.stop();
       if(error.error?.message){
@@ -82,5 +82,15 @@ export class SignupComponent implements OnInit {
   reset(){
     this.submitted=false;
     this.signUpForm.reset();
+  }
+
+  openRegistrationPage(){
+    this.router.navigateByUrl("signup");
+    console.log("Signup called")
+  }
+
+
+  openLoginPage(){
+    this.router.navigateByUrl("login");
   }
 }

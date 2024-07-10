@@ -1,4 +1,30 @@
 
+
+<div class="wrapper sticky">
+    <nav class="navbar-fixed-top">
+      <a href="#" class="logo">
+        <mat-icon>storefront</mat-icon> Cafe - Resto - Bar
+      </a>
+      <ul>
+          <li> 
+              <button  class ="btn btn-primary px-3"(click)="openLoginPage()">Login </button>
+              <button  class ="btn btn-success px-3"(click)="openRegistrationPage()">Signup </button>
+  
+              <a
+              data-mdb-ripple-init
+              class="btn px-3"
+              href="https://github.com/mdbootstrap/mdb-ui-kit"
+              role="button"
+              ><i class="fa fa-user" style="font-size:36px;"></i
+            ></a>
+          </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="footer" id="signup">
+    <h2>All right reserved &#64;</h2>
+  </div>
+
  <div class="container">
 
 
@@ -9,14 +35,14 @@
     <form [formGroup]="signUpForm" class="form-group" (ngSubmit)="onSubmit(signUpForm)" >
         
         <div class="form" >
-            <label for="firstName">Name </label>
+            <label for="firstName">First Name </label>
             <input type="text" id="firstName" formControlName="firstName" class="form-control" >
-            <div *ngIf="signUpForm.get('firstName')?.touched && signUpForm.get('firstName')?.invalid || submitted && signUpForm.get('firstName').invalid"  [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
-                <div *ngIf ="signUpForm.get('firstName')?.errors.required">
+            <div *ngIf="signUpForm.get('firstName')?.touched && signUpForm.get('firstName')?.invalid || submitted && signUpForm.get('firstName')?.invalid"  [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
+                <div *ngIf ="signUpForm.get('firstName')?.errors?.['required']">
                     <span class="text-danger font-bold">*This field is required</span>
                 </div>
 
-                <div *ngIf ="signUpForm.get('name')?.errors.pattern">
+                <div *ngIf ="signUpForm.get('name')?.errors?.['pattern']">
                     <span class="text-danger font-bold">Invalid name </span>
                 </div>
                 
@@ -26,8 +52,8 @@
         <div class="form" >
             <label for="lastName">Last Name </label>
             <input type="text" id="lastName" formControlName="lastName" class="form-control" >
-            <div *ngIf="signUpForm.get('lastName')?.touched && signUpForm.get('lastName')?.invalid || submitted && signUpForm.get('lastName').invalid "  [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
-                <div *ngIf ="signUpForm.get('lastName')?.errors.required">
+            <div *ngIf="signUpForm.get('lastName')?.touched && signUpForm.get('lastName')?.invalid || submitted && signUpForm.get('lastName')?.invalid "  [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
+                <div *ngIf ="signUpForm.get('lastName')?.errors?.['required']">
                     <span class="text-danger font-bold">*Lastname is required</span>
                 </div>
             
@@ -37,11 +63,11 @@
         <div class="form" >
             <label for="email">Email </label>
             <input type="text" id="email" formControlName="email" class="form-control" >
-            <div *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid || submitted && signUpForm.get('email').invalid"  [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
-                <div *ngIf ="signUpForm.get('email')?.errors.required">
+            <div *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid || submitted && signUpForm.get('email')?.invalid"  [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
+                <div *ngIf ="signUpForm.get('email')?.errors?.['required']">
                     <span class="text-danger font-bold">*email is required</span>
                 </div>
-                <div *ngIf ="signUpForm.get('email')?.errors.email">
+                <div *ngIf ="signUpForm.get('email')?.errors?.['email']">
                     <span class="text-danger font-bold">Invalid email</span>
                 </div>
             </div>
@@ -53,11 +79,11 @@
         <div class="form"  >
             <label for="password">Password</label>
             <input type="password" id="password" formControlName="password" class="form-control" >
-            <div *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid || submitted && signUpForm.get('password').invalid" [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
-                <div *ngIf ="signUpForm.get('password')?.errors.required">
+            <div *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid || submitted && signUpForm.get('password')?.invalid" [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
+                <div *ngIf ="signUpForm.get('password')?.errors?.['required']">
                     <span class="text-danger font-bold">*password is required</span>
                 </div>
-                <div *ngIf ="signUpForm.get('password').errors.minlength">
+                <div *ngIf ="signUpForm.get('password')?.errors?.['minlength']">
                     <span class="text-danger font-bold">password must be 8 charecter long</span>
                 </div>
             </div>
@@ -66,11 +92,11 @@
         <div class="form" >
             <label for="confirmPassword">Confirm Password</label>
             <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" >
-            <div *ngIf="signUpForm.get('confirmPassword')?.touched && signUpForm.get('confirmPassword')?.invalid || submitted && signUpForm.get('confirmPassword').invalid"  [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
-                <div *ngIf ="signUpForm.get('confirmPassword')?.errors.required ">
+            <div *ngIf="signUpForm.get('confirmPassword')?.touched && signUpForm.get('confirmPassword')?.invalid || submitted && signUpForm.get('confirmPassword')?.invalid"  [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
+                <div *ngIf ="signUpForm.get('confirmPassword')?.errors?.['required'] ">
                     <span class="text-danger font-bold">*Confirm password is required</span>
                 </div>
-                <div *ngIf ="submitted && signUpForm.get('confirmPassword').errors?.[passwordNotMatch]"  [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
+                <div *ngIf ="submitted && signUpForm.get('confirmPassword')?.errors?.['passwordNotMatch']"  [ngStyle]="{'text-shadow':'5px 5px 10px', 'font-size':'15px'}">
                     <span class="text-danger font-bold"> password & confirm password should be same </span>
                 </div>
             </div>

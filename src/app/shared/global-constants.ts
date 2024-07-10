@@ -13,6 +13,9 @@ export class GlobalConstants{
 
     public static unauthorized: string ="You are not authorized to access this page."
 
+    public static productExistError:string="Product already Exists";
+
+    public static productAdded: string="Product added successfully";
 
 
 }

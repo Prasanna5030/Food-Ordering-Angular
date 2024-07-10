@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit{
   
+   date= new Date().getFullYear();
 constructor(private userServices: UserService,
   private router: Router,
 
@@ -19,10 +20,22 @@ constructor(private userServices: UserService,
   ngOnInit(): void {
     debugger
     this.userServices.checkToken().subscribe((response:any)=>{
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/cafe/dashboard']);
     },(error:any)=>{
       console.log(error)
     })
+  }
+
+
+  
+  openRegistrationPage(){
+    this.router.navigateByUrl("signup");
+    console.log("Signup called")
+  }
+
+
+  openLoginPage(){
+    this.router.navigateByUrl("login");
   }
 
 }

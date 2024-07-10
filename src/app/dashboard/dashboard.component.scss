@@ -61,7 +61,7 @@ body {
     display: inline-block;
     padding: 8px;
     color: white;
-    background-color: #7b1fa2;
+    background-color: #df0f0f;
     text-align: center;
     cursor: pointer;
     width: 100%;
@@ -78,3 +78,7 @@ body {
       display: block;
     }
   }
+
+  mat-card{
+    padding: 20px;
+}

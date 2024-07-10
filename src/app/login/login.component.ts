@@ -48,9 +48,10 @@ export class LoginComponent {
       localStorage.setItem('token',response.access_token)
       this.responseMessage=response?.message;
       this.snackbarService.openSnackbar(this.responseMessage,"");
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/cafe/dashboard']);
     }
   ,(error)=>{
+    this.ngxUILoader.stop();
     if(error.error?.message){
       this.ngxUILoader.stop();
       this.responseMessage= error.error?.message;
@@ -67,5 +68,15 @@ export class LoginComponent {
 
   openForgotPassword(){
    this.router.navigateByUrl("/forgotpassword");
+  }
+
+  openRegistrationPage(){
+    this.router.navigateByUrl("signup");
+    console.log("Signup called")
+  }
+
+
+  openLoginPage(){
+    this.router.navigateByUrl("login");
   }
 }
