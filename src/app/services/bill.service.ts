@@ -1,12 +1,17 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class BillService {
-url:string= "http://localhost:8080"
+url:string= "http://localhost:8080" ;
+apiUrl:string = environment.apiUrl;
+
+dockerUrl:string = 'http://food-ordering-app:8080';
 
 
   constructor(private httpClient : HttpClient) { }

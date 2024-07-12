@@ -18,14 +18,18 @@ export class UserService {
     return localStorage.getItem('token');
   }
 
-  appUrl:string= "http://localhost:8080";
-  // url= environment.apiUrl;
+  url:string= "http://localhost:8080";
+  apiUrl= environment.apiUrl;
+
+  dockerUrl:string = 'http://food-ordering-app:8080';
+
+
   constructor( private router : Router, private ngxUiLoader :NgxUiLoaderService ,private handler:HttpBackend) { 
    this.httpClient=new HttpClient(handler);
   }
 
   signup(data:any){
-    return this.httpClient.post(this.appUrl+"/api/auth/register",data, 
+    return this.httpClient.post(this.url+"/api/auth/register",data, 
       { headers: new HttpHeaders().set('Content-Type','application/json')} )
       .pipe(
       catchError(error => {
@@ -40,7 +44,7 @@ export class UserService {
 
 
   login(data:any){
-    return this.httpClient.post(this.appUrl+"/api/auth/authenticate", data,{
+    return this.httpClient.post(this.url+"/api/auth/authenticate", data,{
       headers: new HttpHeaders().set('Content-Type','application/json')
     }).pipe(
       catchError(error => {
@@ -55,7 +59,7 @@ export class UserService {
   }
 
   forgotPassword(data:any){
-    return this.httpClient.post(this.appUrl+"/api/auth/forgotpassword", data,{
+    return this.httpClient.post(this.url+"/api/auth/forgotpassword", data,{
       headers: new HttpHeaders().set('Content-Type','application/json')
      }).pipe(
       catchError(error => {
@@ -71,7 +75,7 @@ export class UserService {
 
 
   checkToken(){
-    return this.httpClient.get(this.appUrl+"/api/auth/checktoken")
+    return this.httpClient.get(this.url+"/api/auth/checktoken")
   }
 
 
